@@ -1,0 +1,38 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
+.guest-employee {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.grafico-guest {
+  width: 38%;
+  height: 38%;
+}
+
+.grafico-employee {
+  width: 38%;
+  height: 38%;
+}
+
+.terzo-grafico-clevel {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.grafico-clevel {
+  width: 38%;
+  height: 38%;
+}

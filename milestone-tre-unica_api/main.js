@@ -16,20 +16,21 @@ function init() {
   }
 }
 
+
 function guestChart() {
   $.ajax({
-    url: "api-guest.php",
+    url: "api.php"+ location.search,
     method: "GET",
     success: function(data,stato) {
       var ctx = $("#guest");
       var myChart = new Chart(ctx, {
-        type: data.fatturato.type,
+        type: data[0].type,
         data: {
           // labels: ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno','Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'],
           labels: moment.months(),      // ricorda link in html
           datasets: [{
             label: "Vendite al mese",
-            data: data.fatturato.data,
+            data: data[0].data,
             backgroundColor: [
               'rgba(255, 99, 132, 0.2)',
               'rgba(54, 162, 235, 0.2)',
@@ -72,17 +73,17 @@ function guestChart() {
 
 function employeeChart() {
   $.ajax({
-    url: "api-employee.php",
+    url: "api.php"+ location.search,
     method: "GET",
     success: function(data,stato) {
       var ctx = $("#employee");
       var myChart = new Chart(ctx, {
-        type: data.chartType,
+        type: data[1].type,
         data: {
-          labels: data.agenti,
+          labels: data[1].agenti,
           datasets: [{
             label: 'Fatturato Agenti',
-            data: data.fatturati,
+            data: data[1].fatturati,
             backgroundColor: [
               'rgba(255, 99, 132, 0.2)',
               'rgba(54, 162, 235, 0.2)',
@@ -121,17 +122,17 @@ function employeeChart() {
 
 function clevelChart() {
   $.ajax({
-    url: "api-clevel.php",
+    url: "api.php"+ location.search,
     method: "GET",
     success: function(data,stato) {
       var ctx = $('#clevel');
       var myChart = new Chart(ctx, {
-        type: data.chartType,
+        type: data[2].type,
         data: {
-          labels: moment.months(),    // ricorda link in html
+          labels: moment.months(),      // ricorda link in html
           datasets: [{
             label: 'Team1',
-            data: data.vendite[0],
+            data: data[2].data["Team1"],
             backgroundColor: [
               'rgba(255, 159, 64, 0.2)'
             ],
@@ -142,7 +143,7 @@ function clevelChart() {
             },
             {
             label: 'Team2',
-            data: data.vendite[1],
+            data: data[2].data["Team2"],
             backgroundColor: [
               'rgba(153, 102, 255, 0.2)',
               'rgba(255, 159, 64, 0.2)'
@@ -155,7 +156,7 @@ function clevelChart() {
             },
             {
             label: 'Team3',
-            data: data.vendite[2],
+            data: data[2].data["Team3"],
             backgroundColor: [
               'rgba(75, 192, 192, 0.2)',
               'rgba(153, 102, 255, 0.2)',
